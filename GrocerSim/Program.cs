@@ -12,7 +12,7 @@ namespace GrocerSim
         {
             string inputString = (args.Count() < 1 ? null : args[0]);
             
-            Simulator mySim = new ThisSim();
+            Simulator.Simulator mySim = new ThisSim();
             
             mySim.Init(inputString);
 
@@ -21,7 +21,7 @@ namespace GrocerSim
             else
             {
                 mySim.Run();
-                Console.WriteLine("Finished at: t=" + mySim.currentTime.ToString() + " minutes");
+                Console.WriteLine("Finished at: t=" + mySim.result.ToString("F0") + " minutes");
             }
         }
     }

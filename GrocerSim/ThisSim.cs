@@ -3,26 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simulator;
 
 namespace GrocerSim
 {
-    abstract class Simulator
-    {
-        public bool inputParseError { get; set; }
-        public int currentTime { get; set; }
-
-        public abstract bool Init(string s);
-        public abstract bool Done();
-        public abstract void AdvanceState();
-
-        public void Run()
-        {
-            while (!Done())
-                AdvanceState();
-        }
-    }
     
-    class ThisSim : Simulator
+    class ThisSim : Simulator.Simulator
     {
         List<Register> registers;
         List<Customer> customers;
@@ -33,13 +19,21 @@ namespace GrocerSim
         public ThisSim() : base()
         {
         }
+
+        override public void Reset()
+        {
+            Init(inputStr);
+        }
         override public bool Init(string inputFile)
         {
+            inputStr = inputFile;
+
             totalNbrOfTrainees = 1; // defined here, could be overridden by input
             inputParseError = false;
             registers = new List<Register>();
             customers = new List<Customer>();
             currentTime = 0;
+            executionError = false;
 
             System.IO.StreamReader f = GetInputFile(inputFile);
             if( f == null )
@@ -83,6 +77,8 @@ namespace GrocerSim
             CompleteCheckouts();
             AssignArrivingCustomersToRegisters();
             SetNewCheckoutEndTimes();
+
+            result = currentTime;       // so far...
         }
 
         private bool InitRegisters(string s)

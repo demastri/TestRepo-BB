@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GrocerSim</RootNamespace>
-    <AssemblyName>GrocerSim</AssemblyName>
+    <RootNamespace>Simulator</RootNamespace>
+    <AssemblyName>Simulator</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,28 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs" />
-    <Compile Include="ThisSim.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="problem description.pdf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Inputs\input 1.txt" />
-    <Content Include="Inputs\input 2.txt" />
-    <Content Include="Inputs\input 3.txt" />
-    <Content Include="Inputs\input x.txt" />
-    <Content Include="Inputs\input.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Simulator\Simulator.csproj">
-      <Project>{18bc87c7-8cd5-4928-92ab-49db0e8ad096}</Project>
-      <Name>Simulator</Name>
-    </ProjectReference>
+    <Compile Include="Simulator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
