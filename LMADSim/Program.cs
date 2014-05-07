@@ -35,7 +35,7 @@ namespace LMADSim
                     Console.WriteLine("One Or More Problems Parsing Input File.  Exiting.");
                 else
                 {
-                    double result = mySim.RunList(100000);
+                    double result = mySim.RunList(count);
                     Console.WriteLine("Result for p="+inputString+": w=" + result.ToString("F2") );
                 }
             }
