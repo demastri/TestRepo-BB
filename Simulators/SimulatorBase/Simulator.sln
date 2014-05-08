@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator.csproj", "{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimulatorBase", "SimulatorBase.csproj", "{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrocerSim", "GrocerSim\GrocerSim.csproj", "{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{75BD0EB3-2E69-48CF-A9E8-467478A71191}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMADSim", "LMADSim\LMADSim.csproj", "{2B6744A0-698D-4BD6-A048-7A41638B10D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrocerSim", "..\SimulatorClients\GrocerSim\GrocerSim.csproj", "{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMADSim", "..\SimulatorClients\LMADSim\LMADSim.csproj", "{2B6744A0-698D-4BD6-A048-7A41638B10D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +30,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF} = {75BD0EB3-2E69-48CF-A9E8-467478A71191}
+		{2B6744A0-698D-4BD6-A048-7A41638B10D9} = {75BD0EB3-2E69-48CF-A9E8-467478A71191}
 	EndGlobalSection
 EndGlobal
