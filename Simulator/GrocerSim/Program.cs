@@ -10,7 +10,7 @@ namespace GrocerSim
     {
         static void Main(string[] args)
         {
-            string inputString = (args.Count() < 1 ? null : args[0]);
+            string inputString = (args.Count() < 1 ? "../../inputs/input 1.txt" : args[0]);
             
             Simulator.Simulator mySim = new ThisSim();
             

@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrocerSim", "GrocerSim.csproj", "{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "Simulator.csproj", "{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulator", "..\Simulator\Simulator.csproj", "{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrocerSim", "GrocerSim\GrocerSim.csproj", "{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMADSim", "..\LMADSim\LMADSim.csproj", "{2B6744A0-698D-4BD6-A048-7A41638B10D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMADSim", "LMADSim\LMADSim.csproj", "{2B6744A0-698D-4BD6-A048-7A41638B10D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18BC87C7-8CD5-4928-92AB-49DB0E8AD096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6999D12-E584-4BC0-9C68-D62CD3C9C3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B6744A0-698D-4BD6-A048-7A41638B10D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B6744A0-698D-4BD6-A048-7A41638B10D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6744A0-698D-4BD6-A048-7A41638B10D9}.Release|Any CPU.ActiveCfg = Release|Any CPU

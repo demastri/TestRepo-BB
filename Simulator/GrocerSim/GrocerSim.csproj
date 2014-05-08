@@ -59,7 +59,7 @@
     <Content Include="Inputs\input.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simulator\Simulator.csproj">
+    <ProjectReference Include="..\Simulator.csproj">
       <Project>{18bc87c7-8cd5-4928-92ab-49db0e8ad096}</Project>
       <Name>Simulator</Name>
     </ProjectReference>
