@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BCCDFBCE-A5E4-41CD-8146-42A0DFBA148A}</ProjectGuid>
+    <ProjectGuid>{4A65EBE6-0EB6-4EDD-8204-A4D8628ABE3A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameOfLife</RootNamespace>
@@ -61,7 +61,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimulatorBase\SimulatorBase.csproj">
+    <ProjectReference Include="..\..\..\SimulatorBase\SimulatorBase.csproj">
       <Project>{18bc87c7-8cd5-4928-92ab-49db0e8ad096}</Project>
       <Name>SimulatorBase</Name>
     </ProjectReference>

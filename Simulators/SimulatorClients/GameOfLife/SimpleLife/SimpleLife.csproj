@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{620D18FE-2630-4E83-8987-973D3D0063D0}</ProjectGuid>
+    <ProjectGuid>{2A159BA0-B704-473B-88AC-74DC0531CC0A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SimpleLife</RootNamespace>
@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SimulatorBase\SimulatorBase.csproj">
+    <ProjectReference Include="..\..\..\SimulatorBase\SimulatorBase.csproj">
       <Project>{18bc87c7-8cd5-4928-92ab-49db0e8ad096}</Project>
       <Name>SimulatorBase</Name>
     </ProjectReference>
