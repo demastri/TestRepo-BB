@@ -20,6 +20,9 @@ namespace Simulator
         public int stepLimit = -1;
         public string inputStr;
 
+        public List<char> breakKeys = null;
+        public char breakKey;
+
         public abstract bool Init(string s);
         public abstract bool Done();
         public abstract void AdvanceState();
@@ -27,10 +30,15 @@ namespace Simulator
 
         public double Run()
         {
-            int currentStep = 0;
+            int currentStep = currentTime = 0;
 
-            while ( !Done() && (++currentStep < stepLimit || stepLimit == -1) )
+            while (!Done() && (++currentStep < stepLimit || stepLimit == -1))
+            {
+                if( breakKeys != null && Console.KeyAvailable && breakKeys.Contains(breakKey=Console.ReadKey(false).KeyChar) )
+                    break;
+                breakKey = '\0';
                 AdvanceState();
+            }
             return result;
         }
         public double RunList(int count)
