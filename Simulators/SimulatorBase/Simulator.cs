@@ -16,11 +16,16 @@ namespace Simulator
         public bool inputParseError { get; set; }
         public bool stepCountError { get; set; }
         public int currentTime { get; set; }
-        public double result{ get; set; }
-        public int stepLimit = -1;
+        public double result { get; set; }
+        public int stepLimit;
         public string inputStr;
+        public bool trackStates;
+        public bool inALoop;
+        public long loopLength;
 
-        public List<char> breakKeys = null;
+
+        public Dictionary<string, string> stateHashes;
+        public List<char> breakKeys;
         public char breakKey;
 
         public abstract bool Init(string s);
@@ -28,22 +33,78 @@ namespace Simulator
         public abstract void AdvanceState();
         public abstract void Reset();
 
+        public Simulator()
+        {
+            stepLimit = -1;
+            trackStates = false;
+            breakKeys = null;
+            stateHashes = null;
+            inALoop = false;
+            loopLength = -1;
+        }
+
         public double Run()
         {
             int currentStep = currentTime = 0;
+            InitInstrumentation();
 
-            while (!Done() && (++currentStep < stepLimit || stepLimit == -1))
+            while (!Done() && (++currentStep < stepLimit || stepLimit == -1) && !BreakRequested())
             {
-                if( breakKeys != null && Console.KeyAvailable && breakKeys.Contains(breakKey=Console.ReadKey(false).KeyChar) )
-                    break;
-                breakKey = '\0';
                 AdvanceState();
+                UpdateInstrumentation();
             }
             return result;
         }
+
+        private bool BreakRequested()
+        {
+            if (breakKeys != null && Console.KeyAvailable && breakKeys.Contains(breakKey = Console.ReadKey(false).KeyChar))
+                return true;
+            breakKey = '\0';
+            return false;
+        }
+        private string lastHash;
+        private void InitInstrumentation()
+        {
+            lastHash = trackStates ? HashState() : "";
+            inALoop = false;
+            stateHashes = trackStates ? new Dictionary<string, string>() : null;
+        }
+        private void UpdateInstrumentation()
+        {
+            if (trackStates)
+            {
+                string hashString = HashState();
+                if (stateHashes.Keys.Contains(lastHash))    // loop!!!
+                {
+                    inALoop = true;
+                    loopLength = FindLoopLength(lastHash);
+                }
+                else
+                    stateHashes[lastHash] = hashString;
+                lastHash = hashString;
+            }
+        }
+
+        virtual public string HashState()
+        {
+            return currentTime.ToString();
+        }
+        public long FindLoopLength(string curState)
+        {
+            string nextVal = curState;
+            long outVal = 1;
+            while (stateHashes[nextVal] != curState)
+            {
+                nextVal = stateHashes[nextVal];
+                outVal++;
+            }
+            return outVal;
+        }
+
         public double RunList(int count)
         {
-            double stdDev=0;
+            double stdDev = 0;
             return RunList(count, ref stdDev);
         }
         public double RunList(int count, ref double stdDev)
@@ -78,8 +139,8 @@ namespace Simulator
         {
             double sum = 0.0;
             foreach (double x in l)
-                sum += Math.Pow(x-mean,2.0);
-            return (l.Count < 2 ? 0 : Math.Pow(sum / (l.Count)-1, 0.5) );
+                sum += Math.Pow(x - mean, 2.0);
+            return (l.Count < 2 ? 0 : Math.Pow(sum / (l.Count) - 1, 0.5));
         }
         //  ***************************
     }

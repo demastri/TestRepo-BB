@@ -39,6 +39,10 @@ namespace GameOfLife
                 System.Console.WriteLine("|");
             }
             System.Console.WriteLine(parent.currentTime.ToString() + "--------------");
+            if (parent.inALoop)
+                System.Console.WriteLine("--- Loop ("+parent.loopLength.ToString()+") found");
+            else
+                System.Console.WriteLine("---                                              ");
             Thread.Sleep(displayLagMS);
         }
     }

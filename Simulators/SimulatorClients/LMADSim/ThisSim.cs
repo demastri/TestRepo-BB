@@ -61,9 +61,17 @@ namespace LMADSim
         }
         private void ShowADoor()
         {        
-            // don't actually have to do anything here
+            // don't actually have to do anything here, but we'll set the variable for completeness
+            
             // if they are not on a winner, only one door can be shown
-            // if they are, it doesn't matter which door is showm, use picked+1 % 3
+            if (pickedDoor != winner)
+                if( (pickedDoor+1)%3 == winner)
+                    shownDoor = (pickedDoor + 2) % 3;   // so we'd switch to (pd+1)%3...(winner)
+                else
+                    shownDoor = (pickedDoor + 1) % 3;   // so we'd switch to (pd+2)%3...(winner)
+
+            // if they are, it doesn't matter which door is showm, use picked+2 % 3
+            shownDoor = (pickedDoor + 2) % 3;   // so we'll switch to (pd+1)%3...
         }
         private void DecideToSwitch()
         {

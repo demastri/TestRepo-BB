@@ -61,7 +61,7 @@ namespace GameOfLife
             // start state might have griddimensions as well
             gStart = startState.IndexOf('[');
             gEnd = startState.IndexOf(']');
-            if (gStart >=0  && gEnd > 0 && gStart < gEnd )
+            if (gStart >= 0 && gEnd > 0 && gStart < gEnd)
             {
                 string gridStr = startState.Substring(gStart + 1, gEnd - gStart - 1);
                 foreach (string s in gridStr.Split(' '))
@@ -134,7 +134,7 @@ namespace GameOfLife
             foreach (string ss in s.Split(new char[] { ',', ':' }))
                 if (pos.Count < dimensions)
                     pos.Add(Convert.ToInt32(ss));
-            l= new Location(pos);
+            l = new Location(pos);
             return true;
         }
         override public void Reset()
@@ -143,7 +143,7 @@ namespace GameOfLife
         }
         override public bool Done()
         {
-            return changedStates == null || changedStates.Keys == null || changedStates.Keys.Count() == 0;
+            return false; // testing the loop detection code || changedStates == null || changedStates.Keys == null || changedStates.Keys.Count() == 0;
         }
         override public void AdvanceState()
         {
@@ -153,7 +153,7 @@ namespace GameOfLife
             foreach (Location l in universe)
             {
                 int newState = ApplyRules(l);
-                if (GetState(l) != newState && OnGrid(l) )
+                if (GetState(l) != newState && OnGrid(l))
                 {
                     changedStates[l] = newState;
                 }
@@ -163,7 +163,33 @@ namespace GameOfLife
             canvas.DrawState();
         }
 
+        override public string HashState()
+        {
+            string outString = "";
+            Location l = new Location();
+            for (InitUnivPos(ref l); l != null; IncrementUnivPos(ref l))
+                outString += GetState(l).ToString();
+            return outString;
+        }
 
+        private void InitUnivPos(ref Location l)
+        {
+            for (int d = 0; d < dimensions; d++)
+                l.Add(d, GetRange(d).X);
+        }
+        private void IncrementUnivPos(ref Location l)
+        {
+            for (int i = dimensions - 1; i >= 0; i--)
+            {
+                if (l.index[i] == GetRange(i).Y - 1)
+                    continue;   // can't increment here...
+                l.index[i]++;
+                for (int j = i+1; j<dimensions; j++)
+                    l.index[j] = GetRange(j).X;
+                return;
+            }
+            l = null;
+        }
         // local functions:
 
         protected class Transition
@@ -205,10 +231,10 @@ namespace GameOfLife
                 {
                     List<int> born = new List<int>();
                     for (int i = 1; i < s.IndexOf("/"); i++)
-                        born.Add(s[i]-'0');
+                        born.Add(s[i] - '0');
                     List<int> survive = new List<int>();
                     for (int i = s.IndexOf("S") + 1; i < s.Length; i++)
-                        survive.Add(s[i]-'0');
+                        survive.Add(s[i] - '0');
                     List<int> org = new List<int>();
                     for (int i = 0; i < dim; i++)
                         org.Add(0);
@@ -241,9 +267,9 @@ namespace GameOfLife
             private static int getBinaryCount(int i)
             {
                 int outCount = 0;
-                while( i > 0 )
+                while (i > 0)
                 {
-                    if( i % 2 == 1 )
+                    if (i % 2 == 1)
                         outCount++;
                     i /= 2;
                 }
@@ -267,7 +293,7 @@ namespace GameOfLife
         private string refStartState;
         internal List<int> gridSizeLimit;    // MAXINT = unbounded...
         protected int nbrStates;
-        
+
         internal Dictionary<Location, int> curState;
         private Dictionary<Location, int> changedStates;
 
@@ -391,7 +417,7 @@ namespace GameOfLife
         {
             if (geom == 4) // rectangular
             {
-                return FindAdjacent(rectAdj, rectExcl, wrap, gridSize );
+                return FindAdjacent(rectAdj, rectExcl, wrap, gridSize);
             }
             if (geom == 6) // hexagonal
             {
@@ -418,8 +444,8 @@ namespace GameOfLife
                     for (int d = 0; d < index.Count; d++)
                     {
                         int target = index[d] + var.Current[d];
-                        if ( wrap )
-                            target = (target +gridSize[d]) % gridSize[d];
+                        if (wrap)
+                            target = (target + gridSize[d]) % gridSize[d];
                         l.Add(d, target);
                     }
                     outList.Add(l);
