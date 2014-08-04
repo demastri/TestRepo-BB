@@ -34,7 +34,8 @@ namespace GameOfLife
                 for (int x = 0; x < parent.gridSizeLimit[0]; x++)
                 {
                     l.Set(0, x);
-                    System.Console.Write((parent.curState.Keys.Contains(l) && parent.curState[l] == 1) ? "O" : " ");
+                    string onSym = GetOnSym(l);
+                    System.Console.Write((parent.curState.Keys.Contains(l) && parent.curState[l] == 1) ? onSym : " ");
                 }
                 System.Console.WriteLine("|");
             }
@@ -44,6 +45,14 @@ namespace GameOfLife
             else
                 System.Console.WriteLine("---                                              ");
             Thread.Sleep(displayLagMS);
+        }
+        private string GetOnSym(Location l)
+        {
+            if (parent.geometry == 4)
+                return "O";
+            if( parent.geometry == 3 )
+                return (l.index[0] + l.index[1])%2 == 1 ? "V" : "^";
+            return "X";
         }
     }
 }

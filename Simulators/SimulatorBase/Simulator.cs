@@ -32,6 +32,10 @@ namespace Simulator
         public abstract bool Done();
         public abstract void AdvanceState();
         public abstract void Reset();
+        
+        public virtual void Cleanup()
+        {
+        }
 
         public Simulator()
         {
@@ -53,6 +57,7 @@ namespace Simulator
                 AdvanceState();
                 UpdateInstrumentation();
             }
+            Cleanup();
             return result;
         }
 
