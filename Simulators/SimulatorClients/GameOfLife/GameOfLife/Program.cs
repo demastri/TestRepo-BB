@@ -21,9 +21,10 @@ namespace GameOfLife
 
             string inputString;
 
-            //inputString = "[100,40:t] 25,25:1 25,26:1 25,27:1";              // set three explicit points to "on"
+            inputString = "[100,40:t] 25,25:1 25,26:1 25,27:1";              // set three explicit points to "on"
+            //inputString = "[100,40:t] 25,25:1 25,26:1 25,27:1 26,26:1 24,26:1";              // set three explicit points to "on"
             //inputString = "[100,40:f] {75} 50,20:1 49,20:1 51,20:1";              // set three explicit points to "on"   interesting triangle patterns
-            inputString = "[100,40:t] {75} Random20";              // 50x50 grid, wrapped, 75 ms delay, start with 20% "on" at random
+            //inputString = "[100,40:t] {75} Random20";              // 50x50 grid, wrapped, 75 ms delay, start with 20% "on" at random
             //inputString = "[100,30:t] {75} Random05";               // 100x30 grid, wrapped, 75 ms delay, start with 20% "on" at random
             //inputString = "[40,40:t] 30,30:1 31,30:1 32,30:1 32,29:1 31,28:1";    // glider - test grid size
             //inputString = "[10,10:t] 2,2:1 3,2:1 4,2:1 4,1:1 3,0:1";              // glider around corners (loops at 40)

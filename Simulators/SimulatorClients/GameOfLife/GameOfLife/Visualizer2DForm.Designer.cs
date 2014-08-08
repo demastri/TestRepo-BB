@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.canvas = new System.Windows.Forms.Panel();
+            this.canvas = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.canvas)).BeginInit();
             this.SuspendLayout();
             // 
             // canvas
@@ -36,11 +37,11 @@
             this.canvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.canvas.BackColor = System.Drawing.SystemColors.Window;
-            this.canvas.Location = new System.Drawing.Point(12, 12);
+            this.canvas.Location = new System.Drawing.Point(13, 13);
             this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(260, 238);
+            this.canvas.Size = new System.Drawing.Size(259, 237);
             this.canvas.TabIndex = 0;
+            this.canvas.TabStop = false;
             this.canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas_Paint);
             // 
             // Visualizer2DForm
@@ -49,15 +50,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.canvas);
+            this.DoubleBuffered = true;
             this.Name = "Visualizer2DForm";
             this.Text = "VisualizerWindow";
+            ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.Panel canvas;
+        public System.Windows.Forms.PictureBox canvas;
+
+
 
 
     }
